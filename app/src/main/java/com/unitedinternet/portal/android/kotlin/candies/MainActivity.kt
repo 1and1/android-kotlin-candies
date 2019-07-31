@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private val preferences by lazy { getSharedPreferences(KEY_SHARED_PREF, Context.MODE_PRIVATE) }
 
     private val titleTextChanged by lazyResolveAttributeRes(R.attr.titleTextChanged)
-    private val titleColorChanged by lazyResolveAttributeRes(R.attr.titleColorChanged)
+    private val titleColorChanged by lazyResolveColorAttribute(R.attr.titleColorChanged)
 
     private val titleTextView: TextView by lazyBindView(R.id.titleTextView)
     private val changeTitleButton: Button by lazyBindView(R.id.changeTitleButton)
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         changeTitleButton.setOnClickListener {
             titleTextView.setText(titleTextChanged)
-            titleTextView.setTextColor(getColor(titleColorChanged))
+            titleTextView.setTextColor(titleColorChanged)
         }
 
         valueButton.setOnClickListener {
