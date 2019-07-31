@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">candies</string>
+
+    <string name="titleTextChanged">Hola!</string>
+
 </resources>

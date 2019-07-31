@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="titleTextChanged" format="string"/>
+    <attr name="titleColorChanged" format="reference|color"/>
+
+</resources>
