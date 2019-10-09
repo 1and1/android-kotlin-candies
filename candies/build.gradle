@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'digital.wup.android-maven-publish'
 
 android {
     compileSdkVersion 28
@@ -41,3 +43,44 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+
+bintray {
+    user = BINTRAY_USER
+    key = BINTRAY_API_KEY
+
+    pkg {
+        repo = REPO
+        name = 'Android-Kotlin-Candies'
+        userOrg = '1and1-android'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/1and1/android-kotlin-candies'
+        websiteUrl = 'https://github.com/1and1/android-kotlin-candies'
+        issueTrackerUrl = 'https://github.com/1and1/android-kotlin-candies'
+        version {
+            name = VERSION
+            desc = 'Android Kotlin Candies'
+            released = new Date()
+        }
+    }
+
+    publications = ['AndroidKotlinCandiesPublication']
+
+}
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+publishing {
+    publications {
+        AndroidKotlinCandiesPublication(MavenPublication) {
+            from components.android
+            artifact(sourceJar)
+            groupId GROUP_ID
+            artifactId 'android-kotlin-candies'
+            version VERSION
+        }
+    }
+}
+

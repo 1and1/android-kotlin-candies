@@ -1,4 +1,4 @@
-package com.unitedinternet.portal.android.kotlin.candies
+package com.unitedinternet.portal.android.kotlin.candies.app
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.unitedinternet.portal.android.kotlin.candies.*
 
 private const val KEY_SHARED_PREF = "com.unitedinternet.portal.android.kotlin.candies.preferences"
 private const val KEY_VALUE = "$KEY_SHARED_PREF.value"
@@ -29,7 +30,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var value by IntPreference(preferences, KEY_VALUE, 0)
+        var value by IntPreference(
+            preferences,
+            KEY_VALUE,
+            0
+        )
 
         changeTitleButton.setOnClickListener {
             titleTextView.setText(titleTextChanged)

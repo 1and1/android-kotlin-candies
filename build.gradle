@@ -12,6 +12,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
+        classpath "digital.wup:android-maven-publish:3.6.2"
     }
 }
 
@@ -20,6 +22,15 @@ allprojects {
         google()
         jcenter()
         
+    }
+
+    ext {
+        VERSION = '1.0'
+        GROUP_ID = 'com.unitedinternet.portal.android'
+        REPO = 'Android-Kotlin-Candies'
+
+        BINTRAY_USER = System.properties.getProperty("bintray.user")
+        BINTRAY_API_KEY = System.properties.getProperty("bintray.key")
     }
 }
 
